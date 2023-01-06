@@ -1,0 +1,27 @@
+{
+  "name": "curve",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react": "18.0.26",
+    "prettier": "^2.8.1"
+  },
+  "dependencies": {
+    "@notionhq/client": "^2.2.3",
+    "encoding": "^0.1.13",
+    "eslint-config-next": "^13.1.1",
+    "next": "^13.1.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
