@@ -1,5 +1,9 @@
 @import url('hardreset.css');
 
+:root {
+    --main-yellow-color: #FFC83D;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -20,8 +24,7 @@ body {
     font-size: 16px;
     background-color: #A5A4CE;
     width: 90%;
-    margin: 0 auto;
-    line-height: 1.6;
+    margin: 10px auto;
     font-family: var(--font-D2Coding);
     font-weight: 400;
 }

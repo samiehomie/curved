@@ -1,0 +1,13 @@
+.article {
+    margin-top: 23px;
+}
+
+.subTitle {
+    margin-left: -2.3px;
+}
+
+.createdTime {
+    font-weight: 400;
+    color: var(--main-yellow-color);
+    margin: 10px 0 8px 0;
+}

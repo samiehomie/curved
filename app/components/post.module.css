@@ -1,0 +1,10 @@
+.textBox {
+    line-height: 1.6;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+
+.textBox p + p {
+    margin-top: 8px;
+}

@@ -1,0 +1,24 @@
+.NavList {
+    display: flex;
+    justify-content: center;
+    margin: 45px 0 40px 0;
+}
+
+.NavItem {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 2em;
+    display: flex;
+}
+
+.NavItem.on > li, .NavItem:hover > li {
+    color: var(--main-yellow-color);;
+}
+
+
+.NavItem + .NavItem::before {
+    content: "|";
+    display: block;
+    box-sizing: border-box;
+    padding: 0 5px;
+}
