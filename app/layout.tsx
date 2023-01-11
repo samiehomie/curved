@@ -1,5 +1,7 @@
-import './public/css/global.css';
+import './global.css';
 import localFont from '@next/font/local';
+import NavBar from './components/NavBar';
+import { UserProvider } from '@auth0/nextjs-auth0/client';
 
 const myFont = localFont({
   src: [
@@ -17,7 +19,14 @@ export default function RootLayout({
 }) {
   return (
     <html className={myFont.variable}>
-      <body>{children}</body>
+      <body className="font-sans bg-base-purple">
+        <UserProvider>
+          <div className="px-4 py-10 max-w-2xl sm:mx-auto text-sm sm:text-base">
+            <NavBar />
+            {children}
+          </div>
+        </UserProvider>
+      </body>
     </html>
   );
 }

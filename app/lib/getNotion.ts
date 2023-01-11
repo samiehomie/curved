@@ -28,9 +28,21 @@ export async function fetchDatabase(pageName: string) {
   return response.results;
 }
 
-export async function fetchBlocks({ page_id }: { page_id: string }) {
+export async function fetchPage(postId: string) {
+  const response = await notion.pages.retrieve({ page_id: postId });
+  if ('properties' in response) {
+    const title =
+      response.properties.document.type === 'title'
+        ? response.properties.document.title[0].plain_text
+        : '';
+    return title;
+  }
+  return 'No title';
+}
+
+export async function fetchBlocks(postId: string) {
   const response = await notion.blocks.children.list({
-    block_id: page_id,
+    block_id: postId,
     page_size: 100,
   });
   return response.results;
