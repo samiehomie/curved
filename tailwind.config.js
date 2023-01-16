@@ -22,7 +22,10 @@ module.exports = {
         blue: '#3465a4',
         gray: '#c0c0c0',
         green: '#008000',
-        white: '#ffffff'
+        white: '#ffffff',
+        orange: 'orange',
+        brown: '#505050',
+        silver: 'silver',
       },
     },
     extend: {

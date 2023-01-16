@@ -1,6 +1,6 @@
-import { fetchBlocks, fetchPage } from '../../lib/getNotion';
+import { fetchBlocks, fetchPage } from '../../../lib/getNotion';
 import { Suspense } from 'react';
-import { Post } from '../../components/Post';
+import { Post } from '../../../components/Post';
 
 export default async function Page({ params }: { params: { postId: string } }) {
   const page = fetchPage(params.postId);

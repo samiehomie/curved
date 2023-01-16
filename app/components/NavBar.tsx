@@ -4,6 +4,7 @@ import Link from 'next/link';
 import classNames from 'classnames';
 import { usePathname } from 'next/navigation';
 import LogInOrOut from './LogInOrOut';
+import category from '../lib/category';
 
 function toggle(on: boolean) {
   return classNames({
@@ -12,14 +13,14 @@ function toggle(on: boolean) {
   });
 }
 
-const cateList = ['', 'life', 'dog', 'bird'];
+const cateList = ['', ...category];
 
 export default function NavBar() {
   const pathname = usePathname();
 
   return (
-    <nav className="mb-14 flex flex-col space-y-3">
-      <ul className="inline-flex justify-center">
+    <nav className="mb-10">
+      <ul className="flex justify-center">
         {cateList.map((cate) => (
           <li key={cate} className="group">
             <Link className={toggle(pathname === `/${cate}`)} href={`/${cate}`}>
