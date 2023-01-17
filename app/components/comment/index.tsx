@@ -8,7 +8,7 @@ export default function Comment() {
   const { text, setText, comments, onSubmit } = useComments();
 
   return (
-    <div className="mt-20">
+    <div className="mt-16">
       <CommentForm onSubmit={onSubmit} text={text} setText={setText} />
       <CommentList comments={comments} />
     </div>

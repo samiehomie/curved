@@ -8,9 +8,11 @@ export default async function handler(
 ) {
   switch (req.method) {
     case 'GET':
-      return fetchComment(req, res);
+      const comments = await fetchComment(req, res);
+      return comments;
     case 'POST':
-      return createComments(req, res);
+      const newComment = await createComments(req, res);
+      return newComment;
     default:
       return res.status(400).json({ message: 'Invalid method.' });
   }

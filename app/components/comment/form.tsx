@@ -1,3 +1,4 @@
+'use client';
 type CommentFormProps = {
   text: string;
   setText: Function;
@@ -12,17 +13,20 @@ export default function CommentForm({
   return (
     <form onSubmit={onSubmit}>
       <textarea
-        className="flex w-full max-h-40 p-3 rounded resize-y bg-gray-200 text-gray-900 placeholder-gray-500"
+        className="flex w-full max-h-40 p-3 rounded resize-y bg-point-blue text-point-sky placeholder-point-gray"
         rows={2}
-        placeholder={'type!'}
+        placeholder="댓글을 (생각하고) 입력하세요."
         onChange={(e) => setText(e.target.value)}
         value={text}
         disabled={false}
       ></textarea>
       <div className="flex items-center mt-4">
         <div className="flex items-center space-x-6">
-          <button className="py-2 px-4 rounded bg-blue-600 text-white disabled:opacity-40 hover:bg-blue-700">
-            Send
+          <button
+            type="submit"
+            className="py-2 px-4 rounded bg-base-green text-base-white disabled:opacity-40"
+          >
+            <span className="text-base-yellow font-bold">S</span>end
           </button>
         </div>
       </div>

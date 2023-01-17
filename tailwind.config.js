@@ -16,15 +16,20 @@ module.exports = {
       '3xl': '2rem',
     },
     colors: {
+      point: {
+        blue: '#00f',
+        sky: '#0ff',
+        gray: '#d0d0d0',
+      },
       base: {
         purple: '#a5a4ce',
         yellow: '#ffff00',
         blue: '#3465a4',
-        gray: '#c0c0c0',
+        gray: '#d0d0d0',
         green: '#008000',
         white: '#ffffff',
         orange: 'orange',
-        brown: '#505050',
+        brown: '#505070',
         silver: 'silver',
         black: 'black',
       },

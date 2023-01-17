@@ -1,6 +1,6 @@
 export default async function getUser(token: string) {
   const response = await fetch(
-    `https://${process.env.AUTH0_ISSUER_BASE_URL}/userinfo`,
+    `${process.env.AUTH0_ISSUER_BASE_URL}/userinfo`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -8,5 +8,6 @@ export default async function getUser(token: string) {
       },
     },
   );
+  console.log('getUser: ', response);
   return await response.json();
 }

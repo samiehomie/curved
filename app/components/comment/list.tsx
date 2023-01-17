@@ -1,23 +1,13 @@
 'use client';
 
-import { useUser } from '@auth0/nextjs-auth0/client';
+import dateRelative from '../../lib/dateRelative';
 import type { Comment } from '../../interfaces';
 
 type CommentListProps = {
   comments?: Comment[];
 };
 export default function CommentList({ comments }: CommentListProps) {
-  const { user, error, isLoading } = useUser();
-
-  if (isLoading)
-    return <div className="text-center text-base-blue">Loading...</div>;
-  if (error)
-    return (
-      <div className="text-center text-base-blue">
-        {JSON.stringify(error, null, 2)}
-      </div>
-    );
-
+  console.log(comments);
   return (
     <div className="space-y-6 mt-10">
       {comments &&
@@ -35,6 +25,10 @@ export default function CommentList({ comments }: CommentListProps) {
               </div>
 
               <div className="flex-grow">
+                <div className="flex space-x-2">
+                  <b>{comment.user.name}</b>
+                  <time className="text-base-brown">2 days ago</time>
+                </div>
                 <div>{comment.text}</div>
               </div>
             </div>

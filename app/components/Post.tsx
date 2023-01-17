@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Comment from './comment';
 import {
   BlockObjectResponse,
   PartialBlockObjectResponse,
@@ -30,7 +29,7 @@ export async function Post({
                 return (
                   <p
                     key={block.id}
-                    className="my-4 mx-auto prose prose-sm sm:prose-base text-base-black"
+                    className="my-4 prose prose-sm sm:prose-base text-base-black"
                   >
                     {strings.join('')}
                   </p>
@@ -60,7 +59,6 @@ export async function Post({
           }
         })}
       </div>
-      <Comment />
     </div>
   );
 }
