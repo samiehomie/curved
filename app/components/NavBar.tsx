@@ -1,5 +1,4 @@
 'use client';
-
 import Link from 'next/link';
 import classNames from 'classnames';
 import { usePathname } from 'next/navigation';
@@ -19,7 +18,7 @@ export default function NavBar() {
   const pathname = usePathname();
 
   return (
-    <nav className="mb-10">
+    <nav className="mb-10" id="header">
       <ul className="flex justify-center">
         {cateList.map((cate) => (
           <li key={cate} className="group">
@@ -32,7 +31,7 @@ export default function NavBar() {
           </li>
         ))}
       </ul>
-      <LogInOrOut />
+      <LogInOrOut path={pathname!} />
     </nav>
   );
 }

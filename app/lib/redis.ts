@@ -20,7 +20,11 @@ class ClientRedis {
   }
   static getInstance(): Redis | null {
     if (!ClientRedis.instance) {
-      ClientRedis.instance = new IORedis(fixUrl(process.env.REDIS_URL!));
+      ClientRedis.instance = new IORedis({
+        host: 'redis-15164.c290.ap-northeast-1-2.ec2.cloud.redislabs.com',
+        port: 15164,
+        password: process.env.REDIS_PASSWORD,
+      });
     }
     return ClientRedis.instance;
   }

@@ -1,10 +1,7 @@
 import { useUser } from '@auth0/nextjs-auth0/client';
-import { usePathname } from 'next/navigation';
 
-export default function LogInOrOut() {
+export default function LogInOrOut({ path }: { path: string }) {
   const { user, error, isLoading } = useUser();
-  const pathname = usePathname();
-  console.log(pathname);
   if (isLoading)
     return <div className="text-center text-base-blue">Loading...</div>;
   if (error)
@@ -18,7 +15,7 @@ export default function LogInOrOut() {
     return (
       <div className="text-center">
         <a
-          href={`/api/logout/${pathname}`}
+          href={`/api/logout/${path}`}
           className="block text-center text-base-white mt-[12px] mb-[18px]"
         >
           <span
@@ -40,7 +37,7 @@ export default function LogInOrOut() {
   return (
     <div className="text-center">
       <a
-        href={`/api/login/${pathname}`}
+        href={`/api/login/${path}`}
         className="block text-center text-base-white mt-[12px] mb-[18px]"
       >
         <span

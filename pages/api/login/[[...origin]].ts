@@ -4,6 +4,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 export default async function login(req: NextApiRequest, res: NextApiResponse) {
   const { origin } = req.query;
   const path = origin instanceof Array ? origin : [''];
+  console.log(req.headers.referer);
 
   try {
     await auth0.handleLogin(req, res, {

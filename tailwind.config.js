@@ -26,6 +26,7 @@ module.exports = {
         orange: 'orange',
         brown: '#505050',
         silver: 'silver',
+        black: 'black',
       },
     },
     extend: {
