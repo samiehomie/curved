@@ -8,6 +8,5 @@ export default async function getUser(token: string) {
       },
     },
   );
-  console.log('getUser: ', response);
   return await response.json();
 }

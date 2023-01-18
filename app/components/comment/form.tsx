@@ -1,4 +1,5 @@
 'use client';
+
 type CommentFormProps = {
   text: string;
   setText: Function;

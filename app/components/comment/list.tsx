@@ -1,5 +1,3 @@
-'use client';
-
 import dateRelative from '../../lib/dateRelative';
 import type { Comment } from '../../interfaces';
 
@@ -27,7 +25,9 @@ export default function CommentList({ comments }: CommentListProps) {
               <div className="flex-grow">
                 <div className="flex space-x-2">
                   <b>{comment.user.name}</b>
-                  <time className="text-base-brown">2 days ago</time>
+                  <time className="text-base-brown">
+                    {dateRelative(comment.created_at)}
+                  </time>
                 </div>
                 <div>{comment.text}</div>
               </div>

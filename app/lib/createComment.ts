@@ -13,14 +13,11 @@ export default async function createComments(
   const { text } = req.body;
   const { authorization } = req.headers;
 
-  console.log('createComment/auth: ', authorization);
-
   if (!text || !authorization) {
     return res.status(400).json({ message: 'Missing parameter.' });
   }
 
   if (!redis) {
-    console.log('no redis');
     return res
       .status(500)
       .json({ message: 'Failed to connect to redis client.' });
@@ -29,7 +26,6 @@ export default async function createComments(
   try {
     const user = await getUser(authorization);
     if (!user) {
-      console.log('no user');
       return res.status(400).json({ message: 'Need authorization.' });
     }
 

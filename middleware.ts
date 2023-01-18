@@ -3,14 +3,20 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export default async function middleware(req: NextRequest) {
-  const res = NextResponse.next();
-  const user = await getSession(req, res);
-  if (!user) {
-    return NextResponse.redirect(new URL('/', req.url));
+  if (req.nextUrl.pathname === '/') {
+    return NextResponse.rewrite(new URL('/all', req.url));
   }
-  return res;
+
+  if (req.nextUrl.pathname.startsWith('/post')) {
+    const res = NextResponse.next();
+    const user = await getSession(req, res);
+    if (!user) {
+      return NextResponse.redirect(new URL('/', req.url));
+    }
+    return res;
+  }
 }
 
-export const config = {
-  matcher: ['/life/(.+)', '/bird/(.+)', '/dog/(.+)'],
-};
+// export const config = {
+//   matcher: ['/post/:path*'],
+// };

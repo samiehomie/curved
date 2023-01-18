@@ -1,8 +1,7 @@
 'use client';
-
 import type { Comment } from '../interfaces';
-import React, { useState } from 'react';
 import useSWR from 'swr';
+import React, { useState } from 'react';
 
 async function getToken() {
   const response = await fetch('/api/token');

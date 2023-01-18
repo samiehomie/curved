@@ -1,12 +1,11 @@
-import { fetchBlocks, fetchPage } from '../../../lib/getNotion';
+import { fetchBlocks, fetchPage } from '../../lib/getNotion';
 import { Suspense } from 'react';
-import { Post } from '../../../components/Post';
-import Comment from '../../../components/comment';
+import { Post } from '../../components/Post';
+import Comment from '../../components/comment';
 
 export default async function Page({ params }: { params: { postId: string } }) {
   const page = fetchPage(params.postId);
   const postData = fetchBlocks(params.postId);
-
   const title = await page;
   return (
     <div className="max-w-[520px] mx-auto">

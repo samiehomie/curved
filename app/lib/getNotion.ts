@@ -4,16 +4,19 @@ const notion = new Client({
   auth: process.env.AUTH_SECRET,
 });
 
-export async function fetchDatabase(pageName: string) {
+export async function fetchDatabase(pageName: string, nextCursor?: string) {
   const response = await notion.databases.query({
     database_id: process.env.DATABASE_ID as string,
+    page_size: 5,
     filter: {
       and: [
         {
           property: 'category',
           select: {
             does_not_equal: '',
-            [pageName ? 'equals' : 'is_not_empty']: pageName ? pageName : true,
+            [pageName !== 'all' ? 'equals' : 'is_not_empty']: pageName
+              ? pageName
+              : true,
           },
         },
         {
@@ -24,8 +27,13 @@ export async function fetchDatabase(pageName: string) {
         },
       ],
     },
+    ...(nextCursor ? { start_cursor: nextCursor } : {}),
   });
-  return response.results;
+  return {
+    results: response.results,
+    nextCursor: response.next_cursor,
+    hasMore: response.has_more,
+  };
 }
 
 export async function fetchPage(postId: string) {

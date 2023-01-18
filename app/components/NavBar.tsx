@@ -12,18 +12,17 @@ function toggle(on: boolean) {
   });
 }
 
-const cateList = ['', ...category];
-
 export default function NavBar() {
-  const pathname = usePathname();
+  const path = usePathname();
+  const pathname = path?.split('/')[1] || 'all';
 
   return (
     <nav className="mb-10" id="header">
       <ul className="flex justify-center">
-        {cateList.map((cate) => (
+        {category.map((cate) => (
           <li key={cate} className="group">
-            <Link className={toggle(pathname === `/${cate}`)} href={`/${cate}`}>
-              {cate ? cate.toUpperCase() : 'ALL'}
+            <Link className={toggle(pathname === `${cate}`)} href={`/${cate}`}>
+              {cate.toUpperCase()}
             </Link>
             <span className="px-1 text-3xl font-bold leading-none group-last:hidden">
               |
