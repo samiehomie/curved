@@ -7,8 +7,8 @@ export default async function Page({
   searchParams,
 }: {
   params: { category: string; page: string };
-  searchParams?: { [key: string]: string | string[] | undefined };}) {
-  
+  searchParams?: { [key: string]: string | string[] | undefined };
+}) {
   const next = searchParams?.next;
   const { results, nextCursor, hasMore } = await fetchDatabase(
     params.category,
@@ -29,9 +29,9 @@ export default async function Page({
 
 export function generateStaticParams() {
   return [
-    { category: 'all', page: '1' },
-    { category: 'life', page: '1' },
-    { category: 'dog', page: '1' },
-    { category: 'bird', page: '1' },
+    { category: 'all', page: '2' },
+    { category: 'life', page: '2' },
+    { category: 'dog', page: '2' },
+    { category: 'bird', page: '2' },
   ];
 }
