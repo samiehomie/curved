@@ -1,23 +1,17 @@
 import PostList from '../../components/PostList';
+import { Suspense } from 'react';
 import { fetchDatabase } from '../../lib/getNotion';
-import Footer from '../../components/Footer';
+import Spinner from '../../components/Spinner';
 
-export default async function Page({
-  params,
-}: {
-  params: { category: string };
-}) {
-  const { results, nextCursor, hasMore } = await fetchDatabase(params.category);
+export default function Page({ params }: { params: { category: string } }) {
+  const pageData = fetchDatabase(params.category);
   return (
-    <>
-      <PostList database={results} />
-      <Footer
-        pageName={params.category}
-        hasMore={hasMore}
-        nextCursor={nextCursor}
-        pageNumber="1"
-      />
-    </>
+    <Suspense
+      fallback={<Spinner styles="w-[65px] h-[65px] mx-auto mt-[100px]" />}
+    >
+      {/* @ts-expect-error Server Component */}
+      <PostList category={params.category} promise={pageData} />
+    </Suspense>
   );
 }
 

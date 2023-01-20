@@ -24,7 +24,7 @@ export default function Footer({
   console.log('nextCursor: ', nextCursor);
   console.log('nextCursor type: ', typeof nextCursor);
   return (
-    <ul className="block mx-auto mt-11 w-[30%] flex justify-between text-point-blue">
+    <ul className="block mx-auto mt-11 w-[30%] flex justify-between text-point-blue text-base">
       <li className={toggle(pageCond)} onClick={() => router.back()}>
         이전
       </li>

@@ -3,9 +3,9 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export default async function middleware(req: NextRequest) {
-  if (req.nextUrl.pathname === '/') {
-    return NextResponse.rewrite(new URL('/all', req.url));
-  }
+  // if (req.nextUrl.pathname === '/') {
+  //   return NextResponse.rewrite(new URL('/all', req.url));
+  // }
 
   if (req.nextUrl.pathname.startsWith('/post')) {
     const res = NextResponse.next();

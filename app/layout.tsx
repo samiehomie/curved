@@ -24,6 +24,15 @@ export default function RootLayout({
           <div className="px-4 py-10 max-w-2xl sm:mx-auto text-sm sm:text-base">
             <NavBar />
             {children}
+            <div className="text-center mt-20">
+              Created By{' '}
+              <a
+                className="text-point-blue underline"
+                href="mailto:samie.worker@gmail.com"
+              >
+                SAM
+              </a>
+            </div>
           </div>
         </UserProvider>
       </body>

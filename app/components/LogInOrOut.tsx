@@ -1,9 +1,11 @@
 import { useUser } from '@auth0/nextjs-auth0/client';
+import Spinner from './Spinner';
+import GreenButton from './GreenButton';
 
 export default function LogInOrOut({ path }: { path: string }) {
   const { user, error, isLoading } = useUser();
-  if (isLoading)
-    return <div className="text-center text-base-blue">Loading...</div>;
+  if (isLoading) return <Spinner styles="h-[66px] w-[66px] mt-3 mx-auto" />;
+  // return <div className="text-center text-base-blue">Loading...</div>;
   if (error)
     return (
       <div className="text-center text-base-blue">
@@ -14,17 +16,11 @@ export default function LogInOrOut({ path }: { path: string }) {
   if (user) {
     return (
       <div className="text-center">
-        <a
-          href={`/api/logout/${path}`}
-          className="block text-center text-base-white mt-[12px] mb-[18px]"
-        >
-          <span
-            className="tracking-[2px] font-bold px-2.5
-          py-1 bg-base-green shadow-[6.6px_6.6px_3px_0px_rgba(0,0,0,0.5)]"
-          >
-            <span className="text-base-yellow">L</span>ogout
-          </span>
-        </a>
+        <GreenButton
+          path={`/api/logout/${path}`}
+          text="logout"
+          prefetch={false}
+        />
         <div
           className="inline-block px-2 text-base-silver
         leading-6 text-base bg-base-brown"
@@ -36,17 +32,7 @@ export default function LogInOrOut({ path }: { path: string }) {
   }
   return (
     <div className="text-center">
-      <a
-        href={`/api/login/${path}`}
-        className="block text-center text-base-white mt-[12px] mb-[18px]"
-      >
-        <span
-          className="tracking-[2px] font-bold px-2.5
-          py-1 bg-base-green shadow-[6.6px_6.6px_3px_0px_rgba(0,0,0,0.5)]"
-        >
-          <span className="text-base-yellow">L</span>ogin
-        </span>
-      </a>
+      <GreenButton path={`/api/login/${path}`} text="login" prefetch={false} />
       <div
         className="inline-block px-2 text-base-silver
         leading-6 text-base bg-base-brown"

@@ -3,7 +3,9 @@ import formatDistanceToNowStrict from '../lib/dateRelative';
 import {
   PageObjectResponse,
   PartialPageObjectResponse,
+  QueryDatabaseResponse,
 } from '@notionhq/client/build/src/api-endpoints';
+import Footer from './Footer';
 
 function isPageObjectResponse(
   page: PageObjectResponse | PartialPageObjectResponse,
@@ -11,15 +13,20 @@ function isPageObjectResponse(
   return 'properties' in page;
 }
 
-export default function PostList({
-  database,
+export default async function PostList({
+  promise,
+  category,
+  pageNumber,
 }: {
-  database: PageObjectResponse[] | PartialPageObjectResponse[];
+  promise: Promise<QueryDatabaseResponse>;
+  category: string;
+  pageNumber: string | undefined;
 }) {
+  const { results, next_cursor: nextCursor, has_more: hasMore } = await promise;
   return (
     <>
       <ul>
-        {database.map((page) => {
+        {results.map((page) => {
           if (isPageObjectResponse(page)) {
             return (
               <Link
@@ -45,6 +52,12 @@ export default function PostList({
           }
         })}
       </ul>
+      <Footer
+        pageName={category}
+        hasMore={hasMore}
+        nextCursor={nextCursor}
+        pageNumber={pageNumber || '1'}
+      />
     </>
   );
 }

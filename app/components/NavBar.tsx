@@ -3,6 +3,8 @@ import Link from 'next/link';
 import classNames from 'classnames';
 import { usePathname } from 'next/navigation';
 import LogInOrOut from './LogInOrOut';
+import Image from 'next/image';
+import Logo from '../public/img/logo.jpg';
 import category from '../lib/category';
 
 function toggle(on: boolean) {
@@ -18,6 +20,10 @@ export default function NavBar() {
 
   return (
     <nav className="mb-10" id="header">
+      <Link href="/">
+        <Image src={Logo} width={330} className="mx-auto mb-10" alt="logo" />
+      </Link>
+
       <ul className="flex justify-center">
         {category.map((cate) => (
           <li key={cate} className="group">

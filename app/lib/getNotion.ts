@@ -1,4 +1,8 @@
 import { Client } from '@notionhq/client';
+import {
+  PartialBlockObjectResponse,
+  BlockObjectResponse,
+} from '@notionhq/client/build/src/api-endpoints';
 
 const notion = new Client({
   auth: process.env.AUTH_SECRET,
@@ -29,29 +33,34 @@ export async function fetchDatabase(pageName: string, nextCursor?: string) {
     },
     ...(nextCursor ? { start_cursor: nextCursor } : {}),
   });
-  return {
-    results: response.results,
-    nextCursor: response.next_cursor,
-    hasMore: response.has_more,
-  };
+  return response;
 }
 
-export async function fetchPage(postId: string) {
-  const response = await notion.pages.retrieve({ page_id: postId });
-  if ('properties' in response) {
-    const title =
-      response.properties.document.type === 'title'
-        ? response.properties.document.title[0].plain_text
-        : '';
-    return title;
+type fetchPage = {
+  (postId: string, onlyTitle: true): Promise<string>;
+  (postId: string, onlyTitle: false): Promise<
+    (PartialBlockObjectResponse | BlockObjectResponse)[]
+  >;
+};
+
+export const fetchPage: fetchPage = async (
+  postId,
+  onlyTitle: boolean,
+): Promise<any> => {
+  if (onlyTitle) {
+    const response = await notion.pages.retrieve({ page_id: postId });
+    if ('properties' in response) {
+      const title =
+        response.properties.document.type === 'title'
+          ? response.properties.document.title[0].plain_text
+          : '';
+      return title;
+    }
+    return '';
   }
-  return 'No title';
-}
-
-export async function fetchBlocks(postId: string) {
   const response = await notion.blocks.children.list({
     block_id: postId,
     page_size: 100,
   });
   return response.results;
-}
+};
