@@ -21,8 +21,8 @@ export default function Footer({
 }) {
   const pageCond = pageNumber === '1';
   const router = useRouter();
-  console.log('next', nextCursor);
-  console.log('type', typeof nextCursor);
+  console.log('nextCursor: ', nextCursor);
+  console.log('nextCursor type: ', typeof nextCursor);
   return (
     <ul className="block mx-auto mt-11 w-[30%] flex justify-between text-point-blue">
       <li className={toggle(pageCond)} onClick={() => router.back()}>

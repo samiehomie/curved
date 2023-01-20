@@ -1,6 +1,7 @@
 import PostList from '../../../components/PostList';
 import { fetchDatabase } from '../../../lib/getNotion';
 import Footer from '../../../components/Footer';
+import serializer from '../../../lib/serializer';
 
 export default async function Page({
   params,
@@ -14,24 +15,25 @@ export default async function Page({
     params.category,
     next as string,
   );
+
   return (
     <>
       <PostList database={results} />
       <Footer
         pageName={params.category}
         hasMore={hasMore}
-        nextCursor={nextCursor}
+        nextCursor={nextCursor!}
         pageNumber={params.page}
       />
     </>
   );
 }
 
-export function generateStaticParams() {
-  return [
-    { category: 'all', page: '2' },
-    { category: 'life', page: '2' },
-    { category: 'dog', page: '2' },
-    { category: 'bird', page: '2' },
-  ];
-}
+// export function generateStaticParams() {
+//   return [
+//     { category: 'all', page: '2' },
+//     { category: 'life', page: '2' },
+//     { category: 'dog', page: '2' },
+//     { category: 'bird', page: '2' },
+//   ];
+// }
