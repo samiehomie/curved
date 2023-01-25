@@ -50,3 +50,5 @@ export default function Index() {
     </div>
   );
 }
+
+export const revalidate = 1800;

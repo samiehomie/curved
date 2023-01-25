@@ -23,3 +23,5 @@ export function generateStaticParams() {
     { category: 'bird' },
   ];
 }
+
+export const revalidate = 1800;
