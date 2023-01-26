@@ -5,7 +5,6 @@ type CommentListProps = {
   comments?: Comment[];
 };
 export default function CommentList({ comments }: CommentListProps) {
-  console.log(comments);
   return (
     <div className="space-y-6 mt-10">
       {comments &&

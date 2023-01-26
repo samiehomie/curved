@@ -16,9 +16,13 @@ module.exports = {
       '3xl': '2rem',
     },
     colors: {
+      chart: {
+        blue: '#C9D1E7',
+        purple: '#434C8B',
+      },
       point: {
-        blue: '#00f',
-        sky: '#0ff',
+        blue: '#0000FFFF',
+        sky: '#00FFFFFF',
         gray: '#d0d0d0',
         black: '#212121',
         green: '#32CD32',
@@ -36,6 +40,7 @@ module.exports = {
         silver: 'silver',
         black: 'black',
         gray500: '#616161',
+        red: '#911C05',
       },
     },
     extend: {
