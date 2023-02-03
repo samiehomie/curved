@@ -23,6 +23,7 @@ module.exports = {
       point: {
         blue: '#0000FFFF',
         sky: '#00FFFFFF',
+        sky100: 'rgba(0,255,255,0.45)',
         gray: '#d0d0d0',
         black: '#212121',
         green: '#32CD32',
@@ -31,6 +32,7 @@ module.exports = {
       base: {
         purple: '#a5a4ce',
         yellow: '#ffff00',
+        yellow100: 'rgba(255,255,0, 0.45)',
         blue: '#3465a4',
         gray: '#d0d0d0',
         green: '#008000',

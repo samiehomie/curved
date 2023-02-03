@@ -1,13 +1,14 @@
 import Link from 'next/link';
 import formatDistanceToNowStrict from '../lib/dateRelative';
 import SpinnerBarType from './SpinnerBarType';
-import { results, fetchPage } from '../lib/getNotion';
+import { fetchPage } from '../lib/getNotion';
 import {
   PageObjectResponse,
   PartialPageObjectResponse,
   QueryDatabaseResponse,
 } from '@notionhq/client/build/src/api-endpoints';
 import { countTrueOrFalse } from '../lib/getNotion';
+import Title from './Title';
 
 function isPageObjectResponse(
   page: PageObjectResponse | PartialPageObjectResponse,
@@ -54,14 +55,23 @@ export default async function PostListForIndex({
                   href={`post/${page.blocks.id}`}
                   className="basis-[58%] sm:basis-[80%] sm:flex sm:flex-row group sm:hover:bg-point-blue py-1"
                 >
-                  <h2
-                    className="break-all sm:text-ellipsis sm:overflow-hidden sm:basis-[62.5%] sm:whitespace-nowrap
-                  text-base leading-none sm:group-hover:text-base-white"
-                  >
-                    {'title' in page.blocks.properties.document
-                      ? page.blocks.properties.document?.title[0].plain_text
-                      : ''}
-                  </h2>
+                  {'title' in page.blocks.properties.document && (
+                    <Title
+                      title={
+                        page.blocks.properties.document?.title[0].plain_text
+                      }
+                      style="sm:flex-nowrap sm:text-ellipsis sm:whitespace-nowrap
+                      sm:overflow-hidden sm:basis-[62.5%] flex-wrap text-base leading-none sm:group-hover:text-base-white"
+                    />
+                  )}
+                  {/*<h2*/}
+                  {/*  className="break-all sm:text-ellipsis sm:overflow-hidden sm:basis-[62.5%] sm:whitespace-nowrap*/}
+                  {/*text-base leading-none sm:group-hover:text-base-white"*/}
+                  {/*>*/}
+                  {/*  {'title' in page.blocks.properties.document*/}
+                  {/*    ? page.blocks.properties.document?.title[0].plain_text*/}
+                  {/*    : ''}*/}
+                  {/*</h2>*/}
 
                   <div className="mt-1 sm:mt-0 sm:basis-[37.5%] sm:justify-center flex space-x-2">
                     <div

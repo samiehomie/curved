@@ -17,7 +17,7 @@ function toggle(on: boolean) {
 
 export default function NavBar() {
   const path = usePathname();
-  const pathname = path?.split('/')[1] || 'all';
+  const pathname = path?.split('/')[1];
 
   return (
     <nav className="mb-10" id="header">

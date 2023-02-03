@@ -54,7 +54,7 @@ async function TruthLines({
               .slice(0, 7)}
           </h3>
           <ChartForPost data={result.data} cond={cond} />
-          <div className="mt-[10px]">{result.line}</div>
+          <div className="mt-[10px] break-all">{result.line}</div>
         </div>
       ))}
     </div>

@@ -37,7 +37,7 @@ export default function Index() {
         <fieldset className="px-2 border border-solid border-base-black">
           <legend className="text-center">Curve posts</legend>
           <Suspense
-            fallback={<Spinner styles="w-[65px] h-[65px] mx-auto mt-[100px]" />}
+            fallback={<Spinner styles="w-[65px] h-[65px] mx-auto mt-[10px]" />}
           >
             {/* @ts-expect-error Server Component */}
             <PostListForIndex promise={pageData} />
